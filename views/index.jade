@@ -1,18 +1,19 @@
 extends layout
 
 block content
-  .container
+  .container#home
     .logo
       img(src="/images/gz8.png", alt="")
     .menu
       .row1.pure-g
         .left.pure-u-1-2
-          .grid
-            .center
-              .img
-                img(src="/images/news.png")
-              .text
-                | 社会新闻
+          a(href="/infos")
+            .grid
+              .center
+                .img
+                  img(src="/images/news.png")
+                .text
+                  | 社会新闻
         .right.pure-u-1-2
           .grid
             .center

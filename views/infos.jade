@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  #infos
+    each article in articles
+      .row
+        a(href="/infos/"+article.id)
+          | #{article.title}
