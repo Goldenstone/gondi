@@ -87,3 +87,10 @@ body {
 #infos .row {
   line-height: 1.2em;
   margin-bottom: 10px; }
+
+#routines .controls {
+  margin-bottom: 5px; }
+  #routines .controls .control {
+    margin-right: 10px; }
+    #routines .controls .control > span {
+      margin-right: 5px; }
