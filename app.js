@@ -9,6 +9,7 @@ var mongoose = require('mongoose');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var infosHandler = require('./routes/infos');
+var routineHandler = require('./routes/routines');
 
 mongoose.connect('mongodb://localhost/dxnews');
 
@@ -32,6 +33,7 @@ app.use('/', routes);
 app.use('/users', users);
 
 app.use('/infos', infosHandler)
+app.use('/routines', routineHandler);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
