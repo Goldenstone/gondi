@@ -3981,15 +3981,18 @@ var makeRoutines = function(options) {
     this.routines = m.request({ method: 'GET', url: '/api/routines/' }); 
     
     // Conditions
+    this.fromCond = m.prop(null);
     this.toCond = m.prop(null);
-    //this.typeCond = m.prop(null);
+
+    //this.typeCond = m.prop(null); TODO: add type attribute to model
+
     this.filters = m.prop([
       function(r) {
-        return vm.toCond() === null || vm.toCond() === r.to; 
+        return vm.fromCond() === null || vm.fromCond() === r.from;
       },
-      /*function(r) {
-        return vm.typeCond
-      }*/
+      function(r) {
+        return vm.toCond() === null || vm.toCond() === r.to; 
+      }
     ]);
 
     this.changeCond = function(e) {
@@ -4044,15 +4047,40 @@ var makeRoutines = function(options) {
     };
     
     var getControlSection = function() {
-      var destinations = _.uniq(_.pluck(vm.routines(), 'to'));
-      destinations.unshift(null);
+      var routines = vm.routines();
+      var extract = function(attr) {
+        return _.uniq(_.pluck(routines, attr));
+      }
+      var destinations = extract('to') 
+        , departures = extract('from') 
+        , types = extract('type');
+
+      if (destinations.length > 1) destinations.unshift(null);
+      if (departures.length > 1) departures.unshift(null);
+      if (types.length > 1) types.unshift(null);
 
       return m('.controls', [
-        m('.control', [
+        m('span.control', [
+          m('span', '出发地'),
+          m('select', { onchange: vm.changeCond.bind('from') }, _.map(departures, function(dest) {
+            if (dest === null)
+              return m('option', { value: '' }, '全部');
+            return m('option', { value: dest }, dest);
+          }))
+        ]),
+        m('span.control', [
           m('span', '目的地'),
           m('select', { onchange: vm.changeCond.bind('to') }, _.map(destinations, function(dest) {
             if (dest === null)
-              return m('option', { value: '' }, '无');
+              return m('option', { value: '' }, '全部');
+            return m('option', { value: dest }, dest);
+          }))
+        ]),
+        m('span.control', [
+          m('span', '类型'),
+          m('select', { onchange: vm.changeCond.bind('type') }, _.map(types, function(dest) {
+            if (dest === null)
+              return m('option', { value: '' }, '全部');
             return m('option', { value: dest }, dest);
           }))
         ])
@@ -4079,7 +4107,7 @@ makeRoutines({
   root: document.getElementById('routines')
 });
 
-}).call(this,require("oMfpAn"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_972c9a7b.js","/")
+}).call(this,require("oMfpAn"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_ed1aaa7d.js","/")
 },{"buffer":1,"mithril":5,"oMfpAn":4,"underscore":6}]},{},[7])
 
 
