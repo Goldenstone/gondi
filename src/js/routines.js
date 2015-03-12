@@ -96,10 +96,10 @@ var makeRoutines = function(options) {
       return m('.controls', [
         m('span.control', [
           m('span', '出发地'),
-          m('select', { onchange: vm.changeCond.bind('from') }, _.map(departures, function(dest) {
-            if (dest === null)
+          m('select', { onchange: vm.changeCond.bind('from') }, _.map(departures, function(depart) {
+            if (depart === null)
               return m('option', { value: '' }, '全部');
-            return m('option', { value: dest }, dest);
+            return m('option', { value: depart }, depart);
           }))
         ]),
         m('span.control', [
@@ -112,10 +112,10 @@ var makeRoutines = function(options) {
         ]),
         m('span.control', [
           m('span', '类型'),
-          m('select', { onchange: vm.changeCond.bind('type') }, _.map(types, function(dest) {
-            if (dest === null)
+          m('select', { onchange: vm.changeCond.bind('type') }, _.map(types, function(type) {
+            if (type === null)
               return m('option', { value: '' }, '全部');
-            return m('option', { value: dest }, dest);
+            return m('option', { value: type }, type);
           }))
         ])
       ]);
