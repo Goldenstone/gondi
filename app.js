@@ -10,6 +10,7 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var infosHandler = require('./routes/infos');
 var routineHandler = require('./routes/routines');
+var apiHandler = require('./api');
 
 mongoose.connect('mongodb://localhost/dxnews');
 
@@ -28,6 +29,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/api', apiHandler);
 
 app.use('/', routes);
 app.use('/users', users);

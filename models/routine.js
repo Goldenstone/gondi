@@ -5,6 +5,7 @@ var routineSchema = mongoose.Schema({
   to        : String,
   price     : String,
   startTime : String,
+  type      : String,
   note      : String
 });
 

@@ -25,7 +25,8 @@ async.map(data, function(r, cb) {
     to: r[2],
     startTime: r[3],
     price: r[4],
-    note: r[5]
+    note: r[5],
+    type: '汽车'
   });
   routine.save(cb);
 

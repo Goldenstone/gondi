@@ -2,19 +2,6 @@ extends layout
 
 block content
   #routines
-    table.pure-table.pure-table-bordered
-      thead
-        tr
-          th 发车地点
-          th 终点站
-          th 价格
-          th 发车时间
-          th 备注
-      tbody
-        each routine in routines
-          tr
-            td= routine.from
-            td= routine.to
-            td= routine.price
-            td= routine.startTime
-            td= routine.note
+
+block scripts
+  script(src="/js/routines.js")
