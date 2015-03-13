@@ -39,3 +39,4 @@ gulp.task('watch', function() {
 });
 
 gulp.task('default', ['compile:js', 'compile:css', 'watch']);
+gulp.task('build', ['compile:js', 'compile:css']);
