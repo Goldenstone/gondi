@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node_modules/nodemon/bin/nodemon.js ./bin/www localhost 3000",
+    "start": "nodemon app.js localhost 3000",
     "build": "gulp build"
   },
   "dependencies": {
