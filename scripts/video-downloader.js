@@ -340,19 +340,20 @@ var videos = {
 
 var pairs = _.pairs(videos);
 
-async.eachSeries(pairs, function(pair, seriesFinished) {
-  var name = pair[0];
-  var list = pair[1];
+phantom.create(function (ph) {
+  ph.createPage(function (page) {
 
-  var index = 0;
-  async.eachSeries(list, function(feilvUrl, episodeFinished){
-    index++;
+    async.eachSeries(pairs, function(pair, seriesFinished) {
+      var name = pair[0];
+      var list = pair[1];
 
-    var fileName = name+(list.length===1?"":index)+'.mp4';
-    if (fs.existsSync('videos/'+fileName)) return episodeFinished(null);
+      var index = 0;
+      async.eachSeries(list, function(feilvUrl, episodeFinished){
+        index++;
 
-    phantom.create(function (ph) {
-      ph.createPage(function (page) {
+        var fileName = name+(list.length===1?"":index)+'.mp4';
+        if (fs.existsSync('videos/'+fileName)) return episodeFinished(null);
+
         console.log('openning '+feilvUrl);
         page.open(feilvUrl, function (status) {
           console.log("opened website? ", status);
@@ -370,17 +371,19 @@ async.eachSeries(pairs, function(pair, seriesFinished) {
               }else{
                 console.log(fileName+' downloaded successfully!');
               }
-              page.close();
-              ph.exit();
+              // page.close();
+              // ph.exit();
               episodeFinished(null);
             });
           });
-        });
-      });
-    });    
-  }, seriesFinished);
-}, function(err) {
-  if (err) return console.log('err'+err);
-  console.log('all finished!');
+        });          
+      }, seriesFinished);
+    }, function(err) {
+      page.close();
+      ph.exit();      
+      if (err) return console.log('err'+err);
+      console.log('all finished!');
+    });
+  });
 });
 
