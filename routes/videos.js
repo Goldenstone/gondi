@@ -14,6 +14,7 @@ app.get('/', function(req, res) {
       }
     });
     res.render('videos', { files: validFileNames });
-});
+  });
+};
 
 module.exports = app;
