@@ -1,0 +1,7 @@
+extends layout
+
+block content
+  each file in files
+    p
+      a(href="/videos/#{file}")= file
+
