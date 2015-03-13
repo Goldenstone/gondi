@@ -1,5 +1,6 @@
 /node_modules
 *.log
+/scripts/videos
 public/css/*.css
 public/js/*.js
 public/js/*.js.map
