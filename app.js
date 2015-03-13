@@ -38,7 +38,7 @@ app.use('/users', users);
 
 app.use('/infos', infosHandler)
 app.use('/routines', routineHandler);
-app.use('/videos', videosHandler);
+app.use('/all_videos', videosHandler);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
