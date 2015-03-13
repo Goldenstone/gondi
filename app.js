@@ -10,6 +10,7 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var infosHandler = require('./routes/infos');
 var routineHandler = require('./routes/routines');
+var videosHandler = require('./routes/videos');
 var apiHandler = require('./api');
 
 mongoose.connect('mongodb://localhost/dxnews');
@@ -37,6 +38,7 @@ app.use('/users', users);
 
 app.use('/infos', infosHandler)
 app.use('/routines', routineHandler);
+app.use('/videos', videosHandler);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
