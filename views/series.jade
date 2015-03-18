@@ -11,6 +11,6 @@ block content
       each file in files
         - var link = new Buffer(file).toString('hex')
         p
-          a(href="/videos/series/#{link}")= file
+          a(href="/series/#{link}")= file
     else
       p.text-centered 暂无视频
