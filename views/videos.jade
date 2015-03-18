@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  if files.length
+    each file in files
+      p
+        a(href="/videos/#{file}")= file
+  else
+    p 暂无视频
+

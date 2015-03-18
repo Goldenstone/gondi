@@ -10,6 +10,7 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var infosHandler = require('./routes/infos');
 var routineHandler = require('./routes/routines');
+var videosHandler = require('./routes/videos');
 var apiHandler = require('./api');
 
 mongoose.connect('mongodb://localhost/dxnews');
@@ -37,6 +38,7 @@ app.use('/users', users);
 
 app.use('/infos', infosHandler)
 app.use('/routines', routineHandler);
+app.use('/all_videos', videosHandler);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -69,5 +71,11 @@ app.use(function(err, req, res, next) {
     });
 });
 
+//module.exports = app;
+var debug = require('debug')('cscec');
 
-module.exports = app;
+app.set('port', process.env.PORT || 3000);
+
+var server = app.listen(app.get('port'), function() {
+  debug('Express server listening on port ' + server.address().port);
+});
