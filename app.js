@@ -12,6 +12,9 @@ var infosHandler = require('./routes/infos');
 var routineHandler = require('./routes/routines');
 var videosHandler = require('./routes/videos');
 var apiHandler = require('./api');
+var moviesHandler = require('./routes/movies');
+var seriesHandler = require('./routes/series');
+
 
 mongoose.connect('mongodb://localhost/dxnews');
 
@@ -38,7 +41,10 @@ app.use('/users', users);
 
 app.use('/infos', infosHandler)
 app.use('/routines', routineHandler);
-app.use('/all_videos', videosHandler);
+// app.use('/all_videos', videosHandler);
+
+app.use('/movies', moviesHandler);
+app.use('/series', seriesHandler);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
