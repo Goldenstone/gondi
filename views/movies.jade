@@ -9,8 +9,7 @@ block content
       a(href="/series") 电视剧
     if files.length
       each file in files
-        - var link = new Buffer(file).toString('hex')
         p
-          a(href="/videos/movies/#{link}")= file
+          a(href="/videos/movies/#{file}")= file
     else
       p.text-centered 暂无视频
