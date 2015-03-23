@@ -13,7 +13,7 @@ app.param('id', function(req, res, next, id) {
 
 app.get('/', function(req, res) {
   console.log('hi');
-  Article.find({}, function(err, articles) {
+  Article.find().limit(20).exec(function(err, articles) {
     if (err) return res.status(400).json({message: 'err'});
     res.render('infos', {articles: articles});
   });
