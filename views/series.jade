@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  #series
+    .row1 
+      h3 电视剧目录
+    .row2 
+      | 我想看&nbsp;
+      a(href="/movies") 电影
+    if files.length
+      each file in files
+        - var link = new Buffer(file).toString('hex')
+        p
+          a(href="/series/#{link}")= file
+    else
+      p.text-centered 暂无视频

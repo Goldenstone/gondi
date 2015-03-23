@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  #single_series
+    .row1 
+      h3= name
+    if files.length
+      each file in files
+        p
+          a(href="/videos/series/#{name}/#{file}")= file
+    else
+      p.text-centered 暂无视频

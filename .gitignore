@@ -6,3 +6,6 @@ public/js/*.js
 public/js/*.js.map
 public/videos/*
 !.keep
+/scripts/movies/*
+/scripts/videos-backup/*
+/scripts/series/*

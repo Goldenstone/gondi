@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  #movies
+    .row1 
+      h3 电影目录
+    .row2 
+      | 我想看&nbsp;
+      a(href="/series") 电视剧
+    if files.length
+      each file in files
+        p
+          a(href="/videos/movies/#{file}")= file
+    else
+      p.text-centered 暂无视频
