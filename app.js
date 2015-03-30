@@ -4,7 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
+// var mongoose = require('mongoose');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -16,7 +16,7 @@ var moviesHandler = require('./routes/movies');
 var seriesHandler = require('./routes/series');
 
 
-mongoose.connect('mongodb://localhost/dxnews');
+// mongoose.connect('mongodb://localhost/dxnews');
 
 require('./cron');
 
@@ -34,17 +34,17 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/api', apiHandler);
+// app.use('/api', apiHandler);
 
 app.use('/', routes);
-app.use('/users', users);
+// app.use('/users', users);
 
-app.use('/infos', infosHandler)
-app.use('/routines', routineHandler);
+// app.use('/infos', infosHandler)
+// app.use('/routines', routineHandler);
 // app.use('/all_videos', videosHandler);
 
-app.use('/movies', moviesHandler);
-app.use('/series', seriesHandler);
+// app.use('/movies', moviesHandler);
+// app.use('/series', seriesHandler);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
