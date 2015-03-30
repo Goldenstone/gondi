@@ -1,10 +1,4 @@
 /node_modules
-gulpfile.js
-import.js
-nodemon.json
-processes.json
-/models
-/src
 
 *.log
 !.keep

@@ -1,0 +1,4 @@
+{
+  "varbose"   : true,
+  "ignore"    : ["src/", "public/", "gulpfile.js", "views/", "test/", "node_modules/"]
+}
